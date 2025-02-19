@@ -2,4 +2,6 @@
     <string name="app_name">My Application</string>
     <string name="fittrack">FitTrack</string>
     <string name="edit">Edit</string>
+    <string name="button">Button</string>
+    <string name="menu">Menu</string>
 </resources>

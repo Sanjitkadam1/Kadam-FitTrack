@@ -8,26 +8,16 @@
     android:backgroundTint="#1F1F1F">
 
     <ImageButton
-        android:id="@+id/menuButton"
+        android:id="@+id/PagesButton"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:backgroundTint="#2C2C2C"
-        android:text="@string/menu"
-        android:textColor="#FBDFFF"
-        android:contentDescription="@string/menu_button"
-        android:src=""
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#2C2C2C"
+        android:contentDescription="@string/pagesbutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:backgroundTint="#2C2C2C"
-        android:text="@string/edit"
-        android:textColor="#FBDFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pages_button" />
 
     <TextView
         android:id="@+id/textView"
@@ -43,7 +33,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="409dp"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +43,7 @@
 
         <Button
             android:id="@+id/button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -61,6 +53,7 @@
 
         <Button
             android:id="@+id/button3"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -70,6 +63,7 @@
 
         <Button
             android:id="@+id/button4"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -79,7 +73,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/dateBar"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:background="#2C2C2C"
@@ -91,5 +85,164 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#2C2C2C"
+        android:contentDescription="@string/imagebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit_button" />
+
+    <ImageView
+        android:id="@+id/stepsImage"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="10dp"
+        android:background="#1F1F1F"
+        android:contentDescription="@string/editbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateBar"
+        app:srcCompat="@drawable/shoeprints" />
+
+    <ImageView
+        android:id="@+id/distImage"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="10dp"
+        android:background="#1F1F1F"
+        android:contentDescription="@string/stepsimage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StepsBar"
+        app:srcCompat="@drawable/running" />
+
+    <ProgressBar
+        android:id="@+id/StepsBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#3CCA72"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ProgressBar
+        android:id="@+id/distBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#EA4B4C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <ProgressBar
+        android:id="@+id/distBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#EA4B4C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/mileNum"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:text="1.15"
+        android:textColor="#EA4B4C"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/distImage" />
+
+    <TextView
+        android:id="@+id/stepsNum"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:text="2,500"
+        android:textColor="#3CCA72"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/stepsImage" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="175dp"
+        android:gravity="center"
+        android:text="Steps"
+        android:textColor="#F9DEFD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stepsImage" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="175dp"
+        android:gravity="center"
+        android:text="Miles"
+        android:textColor="#F9DEFD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distImage" />
+
+    <ImageView
+        android:id="@+id/calImage"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="10dp"
+        android:background="#1F1F1F"
+        android:contentDescription="calImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distBar"
+        app:srcCompat="@drawable/flame_1" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="175dp"
+        android:gravity="center"
+        android:text="kCals"
+        android:textColor="#F9DEFD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calImage" />
+
+    <TextView
+        android:id="@+id/calNum"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:text="5,024"
+        android:textColor="#E99707"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/calImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

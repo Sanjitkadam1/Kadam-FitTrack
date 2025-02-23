@@ -9,4 +9,8 @@
     <string name="week">Week</string>
     <string name="month">Month</string>
     <string name="menu_button">Menu Button</string>
+    <string name="pagesbutton">PagesButton</string>
+    <string name="imagebutton">imageButton</string>
+    <string name="editbutton">editButton</string>
+    <string name="stepsimage">stepsImage</string>
 </resources>

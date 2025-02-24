@@ -1,22 +1,24 @@
 package com.example.myapplication
 
 
+//import android.R
+import android.R.id.message
+import android.app.Activity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.LayoutRes
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import androidx.room.ColumnInfo
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Entity
+import androidx.room.Insert
+import androidx.room.PrimaryKey
+import androidx.room.Query
+import androidx.room.Update
 import fittrack.app.R
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.layout)
 
+//        <set images for buttons
         val editButton: ImageButton = findViewById(R.id.editButton)
         editButton.setImageResource(R.drawable.edit)
 
@@ -38,6 +41,39 @@ class MainActivity : ComponentActivity() {
 
         val calView: ImageView = findViewById(R.id.calImage)
         calView.setImageResource(R.drawable.flame_1)
+//        set images for buttons>
     }
+
 }
+@Entity
+data class homeData1(
+    @PrimaryKey val dateID: Int,
+    @ColumnInfo(name = "stepData") val stepData: Int?,
+    @ColumnInfo(name = "calData") val calData: Int?,
+    @ColumnInfo(name = "distData") val distData: Int?
+)
+
+@Dao
+interface homeDataA {
+    @Insert
+    suspend fun insertDataA(vararg homeData1: homeData1)
+
+    @Update
+    suspend fun updateDataA(vararg homeData1: homeData1)
+
+    @Delete
+    suspend fun deleteData(vararg homeData1: homeData1)
+
+    @Query("SELECT stepData FROM homedata1")
+    suspend fun loadSteps(id: Int): homeData1
+
+    @Query("SELECT calData FROM homeData1")
+    suspend fun loadCal(id:Int): homeData1
+
+    @Query("SELECT distData FROM homeData1")
+    suspend fun distData(id: Int): homeData1
+
+
+}
+
 

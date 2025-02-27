@@ -63,19 +63,14 @@ dependencies {
     implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.4.0-alpha08")
     val room_version = "2.6.1"
-
     implementation("androidx.health.connect:connect-client:1.1.0-alpha02")
-
     implementation("androidx.room:room-runtime:$room_version")
-
 //    ksp("androidx.room:room-compiler:$room_version")
-
     annotationProcessor("androidx.room:room-compiler:$room_version")
-
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
-
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
+
 
 }

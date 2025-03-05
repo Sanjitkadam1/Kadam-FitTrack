@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:backgroundTint="#2C2C2C"
             android:text="@string/day"
-            android:textColor="#FBDFFF" />
+            android:textColor="#FFCF40" />
 
         <Button
             android:id="@+id/button3"

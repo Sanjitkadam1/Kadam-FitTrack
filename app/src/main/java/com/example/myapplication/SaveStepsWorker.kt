@@ -15,10 +15,10 @@ class SaveStepsWorker(context: Context, workerParams: WorkerParameters) : Corout
             val existingData = stepDao.loadSteps(dateID)
             if (existingData != null) {
                 // Update if the data already exists
-                stepDao.updateDataA(homeData1(dateID, steps, null, null))
+                stepDao.updateDataA(HomeData1(dateID, steps, null, null))
             } else {
                 // Insert new data if not already in the database
-                stepDao.insertDataA(homeData1(dateID, steps, null, null))
+                stepDao.insertDataA(HomeData1(dateID, steps, null, null))
             }
             Result.success()
         } catch (e: Exception) {

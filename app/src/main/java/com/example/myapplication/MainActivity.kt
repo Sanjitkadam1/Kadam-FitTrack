@@ -3,8 +3,8 @@ package com.example.myapplication
 
 
 import android.content.Intent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
+//import android.hardware.SensorEventListener
+//import android.hardware.SensorManager
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -21,12 +21,12 @@ import fittrack.app.R
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import java.util.Calendar
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var sensorManager: SensorManager
-    private lateinit var sensorEventListener: SensorEventListener
+//    private lateinit var sensorManager: SensorManager
+//    private lateinit var sensorEventListener: SensorEventListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         distView.setImageResource(R.drawable.running)
         val calView: ImageView = findViewById(R.id.calImage)
         calView.setImageResource(R.drawable.flame_1)
-//        set images for buttons>
+//        <\set images for buttons>
 
 //        if (stepCounterSensor != null) {
 //            sensorEventListener = object : SensorEventListener {
@@ -82,11 +82,18 @@ class MainActivity : AppCompatActivity() {
 //        super.onPause()
 //        sensorManager.unregisterListener(sensorEventListener)
 //    }
+    fun getWeekID(dateMillis: Long): Int {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = dateMillis
+        val year = calendar.get(Calendar.YEAR)
+        val weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR)
+        return year * 100 + weekOfYear
+}
 
 }
 
 @Entity
-data class homeData1(
+data class HomeData1(
     @PrimaryKey val dateID: Int,
     @ColumnInfo(name = "stepData") val stepData: Int?,
     @ColumnInfo(name = "calData") val calData: Int?,
@@ -94,27 +101,47 @@ data class homeData1(
 )
 
 @Dao
-interface homeDataA {
+interface HomeDataA {
     @Insert
-    suspend fun insertDataA(vararg homeData1: homeData1)
+    suspend fun insertDataA(vararg homeData1: HomeData1)
 
     @Update
-    suspend fun updateDataA(vararg homeData1: homeData1)
+    suspend fun updateDataA(vararg homeData1: HomeData1)
 
     @Delete
-    suspend fun deleteData(vararg homeData1: homeData1)
+    suspend fun deleteData(vararg homeData1: HomeData1)
 
     @Query("SELECT * FROM homedata1 WHERE dateID = :id")
-    suspend fun loadSteps(id: Int): homeData1?
+    suspend fun loadSteps(id: Int): HomeData1?
 
 
     @Query("SELECT calData FROM homeData1")
-    suspend fun loadCal(id:Int): homeData1
+    suspend fun loadCal(id:Int): HomeData1
 
     @Query("SELECT distData FROM homeData1")
-    suspend fun distData(id: Int): homeData1
-
+    suspend fun distData(id: Int): HomeData1
 
 }
 
+@Entity
+data class HomeData2(
+    @PrimaryKey val dateID: Int,
+    @ColumnInfo(name = "stepAvg") val stepAvg: Int?,
+    @ColumnInfo(name = "calAvg") val calAvg: Int?,
+    @ColumnInfo(name = "distAvg") val distAvg: Int?
+)
+
+@Dao
+interface HomeDataB {
+    @Insert
+    suspend fun insertDataB(vararg homeData2: HomeData2)
+
+    @Update
+    suspend fun updateDataB(vararg homeData2: HomeData2)
+
+    @Delete
+    suspend fun deleteData(vararg homeData2: HomeData2)
+
+
+}
 

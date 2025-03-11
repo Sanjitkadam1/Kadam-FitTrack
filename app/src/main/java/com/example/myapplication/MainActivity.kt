@@ -3,6 +3,7 @@ package com.example.myapplication
 
 
 import android.content.Intent
+import android.content.res.Resources
 //import android.hardware.SensorEventListener
 //import android.hardware.SensorManager
 import android.os.Bundle

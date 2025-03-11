@@ -97,8 +97,8 @@ class MainActivity : AppCompatActivity() {
 data class HomeData1(
     @PrimaryKey val dateID: Int,
     @ColumnInfo(name = "stepData") val stepData: Int?,
-    @ColumnInfo(name = "calData") val calData: Int?,
-    @ColumnInfo(name = "distData") val distData: Int?
+    @ColumnInfo(name = "calData") val calData: Float?,
+    @ColumnInfo(name = "distData") val distData: Float?
 )
 
 @Dao
@@ -117,10 +117,10 @@ interface HomeDataA {
 
 
     @Query("SELECT calData FROM homeData1")
-    suspend fun loadCal(id:Int): HomeData1
+    suspend fun loadCal(id:Float): HomeData1
 
     @Query("SELECT distData FROM homeData1")
-    suspend fun distData(id: Int): HomeData1
+    suspend fun distData(id: Float): HomeData1
 
 }
 

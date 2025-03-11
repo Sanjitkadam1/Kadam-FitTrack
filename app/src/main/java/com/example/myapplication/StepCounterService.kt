@@ -19,6 +19,8 @@ class StepCounterService : Service(), SensorEventListener {
     private var stepCounter: Sensor? = null
     private var dailySteps = 0f
     private var initialSteps = -1f
+    private var distanceTraveled = 0f // Distance in meters
+    private val defaultStrideLength = 0.78f // Average stride length in meters
 
 
     override fun onCreate() {
@@ -40,7 +42,11 @@ class StepCounterService : Service(), SensorEventListener {
                 initialSteps = currentSteps // Set the initial steps
             }
             dailySteps = currentSteps - initialSteps // Calculate steps for the day
-            println("Daily Steps: $dailySteps")
+
+            // Calculate distance dynamically
+            distanceTraveled = dailySteps * defaultStrideLength // Distance in meters
+
+            println("Daily Steps: $dailySteps, Distance Traveled: $distanceTraveled meters")
 //            println("Steps in background: $steps")
         }
     }
@@ -48,7 +54,12 @@ class StepCounterService : Service(), SensorEventListener {
     private fun scheduleEndOfDaySave() {
         val workRequest = OneTimeWorkRequestBuilder<SaveStepsWorker>()
             .setInitialDelay(calculateTimeUntilMidnight(), TimeUnit.MILLISECONDS) // Delay until midnight
-            .setInputData(workDataOf("steps" to dailySteps)) // Pass daily steps to the worker
+            .setInputData(
+                workDataOf(
+                    "steps" to dailySteps,
+                    "distance" to distanceTraveled
+                )
+            ) // Pass daily steps to the worker
             .build()
 
         WorkManager.getInstance(this).enqueue(workRequest)

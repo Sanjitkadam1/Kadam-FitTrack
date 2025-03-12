@@ -3,9 +3,6 @@ package com.example.myapplication
 
 
 import android.content.Intent
-import android.content.res.Resources
-//import android.hardware.SensorEventListener
-//import android.hardware.SensorManager
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -26,26 +23,16 @@ import java.util.Calendar
 
 
 class MainActivity : AppCompatActivity() {
-//    private lateinit var sensorManager: SensorManager
-//    private lateinit var sensorEventListener: SensorEventListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.layout)
+        setContentView(R.layout.activity_main)
 
         val serviceIntent = Intent(this, StepCounterService::class.java)
         ContextCompat.startForegroundService(this, serviceIntent)
 
-        val dayButton: Button = findViewById<Button>(R.id.button)
-        dayButton.setOnClickListener {
-            setContentView(R.layout.weeklayout)
-        }
-
-
-//        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-//        val stepCounterSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
 //        <set images for buttons
         val editButton: ImageButton = findViewById(R.id.editButton)
@@ -60,37 +47,16 @@ class MainActivity : AppCompatActivity() {
         calView.setImageResource(R.drawable.flame_1)
 //        <\set images for buttons>
 
-//        if (stepCounterSensor != null) {
-//            sensorEventListener = object : SensorEventListener {
-//                override fun onSensorChanged(event: SensorEvent?) {
-//                    event?.let {
-//                        val steps = it.values[0]
-//                        // Process the step count here
-//                        println("Steps: $steps")
-//                    }
-//                }
-//
-//                override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-//                    // Handle sensor accuracy changes here if needed
-//                }
-//            }
-//
-//
-//        }
+
     }
 
-//    override fun onPause() {
-//        super.onPause()
-//        sensorManager.unregisterListener(sensorEventListener)
-//    }
     fun getWeekID(dateMillis: Long): Int {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = dateMillis
         val year = calendar.get(Calendar.YEAR)
         val weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR)
         return year * 100 + weekOfYear
-}
-
+    }
 }
 
 @Entity
